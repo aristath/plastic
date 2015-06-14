@@ -148,3 +148,26 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+function get_plastic_menu() {
+
+	$menu_name = 'primary';
+
+	if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[$menu_name] ) ) {
+		$menu       = wp_get_nav_menu_object( $locations[$menu_name] );
+		$menu_items = wp_get_nav_menu_items( $menu->term_id );
+
+		$menu = '<paper-menu class="list">';
+
+		foreach ( (array) $menu_items as $key => $menu_item ) {
+			$title = $menu_item->title;
+			$menu .= '<a href="' . $menu_item->url . '"><span>' . $menu_item->title . '</span></a>';
+		}
+
+		$menu .= '</paper-menu>';
+
+		return $menu;
+
+	}
+
+}
