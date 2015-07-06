@@ -886,3 +886,7 @@ object {
 .gallery-caption {
 	display: block;
 }
+
+body {
+	position: relative;	
+}

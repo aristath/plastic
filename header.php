@@ -56,12 +56,29 @@
 				<paper-toolbar id="mainToolbar">
 					<paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
 					<span class="flex"></span>
+
+					<!-- page title -->
+					<div class="middle middle paper-font-display2 title">
+						<?php if ( is_404() ) : ?>
+							<?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'plastic' ); ?>
+						<?php elseif ( is_archive() ) : ?>
+							<?php the_archive_title(); ?>
+						<?php else : ?>
+							<?php the_title(); ?>
+						<?php endif; ?>
+					</div>
+
+					<div class="top app-name"><?php bloginfo( 'name' ); ?></div>
+
 					<!-- Toolbar icons -->
 					<paper-icon-button icon="refresh"></paper-icon-button>
 					<paper-icon-button icon="search"></paper-icon-button>
 
-					<!-- Application name -->
-					<div class="middle paper-font-display2 app-name"><?php bloginfo( 'name' ); ?></div>
-					<!-- Application sub title -->
-					<div class="bottom title"></div>
+					<div class="bottom sub-title">
+						<?php if ( is_archive() ) : ?>
+							<?php the_archive_description( '<div class="taxonomy-description">', '</div>' ); ?>
+						<?php endif; ?>
+					</div>
 				</paper-toolbar>
+
+				<paper-material elevation="1">

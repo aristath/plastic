@@ -20,6 +20,7 @@ get_header(); ?>
 
 			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
+				<paper-material elevation="1">
 
 				<?php
 
@@ -30,6 +31,7 @@ get_header(); ?>
 					 */
 					get_template_part( 'template-parts/content', get_post_format() );
 				?>
+				</paper-material>
 
 			<?php endwhile; ?>
 
